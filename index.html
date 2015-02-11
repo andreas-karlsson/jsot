@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSON OT Experiment</title>
+<script src="jsot.js"></script>
+</head>
+<body>
+<script>
+
+	function dump(value) { return JSON.stringify(value, null, '  '); }
+
+	var doc1 = new jsot.Document;
+	var doc2 = new jsot.Document;
+
+	var op1 = {
+		$op: 'set',
+		value: { name: 'Andreas'}
+	};
+
+	var op2 = {
+		age: {
+			$op: 'set',
+			value: 33
+		}
+	};
+
+	doc1.apply(op1);
+	doc1.apply(op2);
+
+	var op12 = jsot.compose(op2, op1);
+	doc2.apply(op12);
+
+	console.log(dump(op12), doc1.dump(), doc2.dump());
+
+</script>
+</body>
+</html>
