@@ -1,2 +1,2 @@
 # jsot
-JSon Operational Transform
+JSon Operational Transform (WIP)
